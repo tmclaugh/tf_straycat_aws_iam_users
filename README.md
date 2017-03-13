@@ -1,4 +1,4 @@
-# tf_straycat_aws_iam
+# tf_threatstack_aws_iam
 Manages users in AWS IAM
 
 ## Variables
