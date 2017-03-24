@@ -16,3 +16,7 @@ Manages users in AWS IAM
 
 * ___code_commit_ssh_key:___ User CodeCommit SSH key.
 
+* ___exists:___ If the user should exist. Useful when a user shouldn't exist in a particular environment. This allows you to drive an environment via tfvars data over needing to code two environments differently.
+
+* ___access:___ If the user should have access. Setting to false we keep the IAM account but remove keys and passwords.
+

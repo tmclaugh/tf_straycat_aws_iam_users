@@ -32,3 +32,15 @@ variable "code_commit_ssh_key" {
   description = "CodeCommit SSH key."
   default = ""
 }
+
+# This exists because you can't set count on a module and I needed a way to
+# selectively create users based on the environment.
+variable "exists" {
+  description = "If the user should exist or not."
+  default = true
+}
+
+variable "access" {
+  description = "If the user should have access. Use to remove access but not remove account."
+  default = true
+}
