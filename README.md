@@ -1,22 +1,16 @@
-# tf_straycat_aws_iam
-Manages users in AWS IAM
+# tf_straycat_aws_iam_users
+Manage a map of users in AWS IAM.
+
+As we cannot currently use count to call a module multiple times, we create this purpose built module which takes a single map of users and their attributes.
+
+__NOTE: This module should not exist.  It exists purely to solve a weakness in Terraform.  At the end of the day I debated giving up my DRY principle over to create a module that didn’t look like this but I feel DRY and modeling infrastructures as data was more important.__
 
 ## Variables
 ### Required
-* ___aws_iam_user_name:___ Username for user.
-
-* ___keybase_id:___ Keybase.io ID. Used to encrypt sensitive data like passwords and AWS secret keys.
+* ___aws_iam_user_list:___ A list of IAM users to create.
 
 ### Optional
-* ___aws_iam_user_path:___ Optional path for username.  Place service related accounts under _/service_.
+* keybase_id_map: Map of users (from aws_iam_user_list) to keybase IDs.  This is needed to create IAM API credentials and set a password.
 
-* ___aws_iam_user_force_destroy:___ If Terraform should force destruction.  Needed if un managed resources are associated with user.
-
-* ___ec2_ssh_key:___ User's SSH key for EC2 insatnces.
-
-* ___code_commit_ssh_key:___ User CodeCommit SSH key.
-
-* ___exists:___ If the user should exist. Useful when a user shouldn't exist in a particular environment. This allows you to drive an environment via tfvars data over needing to code two environments differently.
-
-* ___access:___ If the user should have access. Setting to false we keep the IAM account but remove keys and passwords.
+* ec2_ssh_id_map: Map of users (from aws_iam_user_list) to ssh public keys.
 
